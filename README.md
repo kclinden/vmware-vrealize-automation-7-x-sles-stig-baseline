@@ -20,9 +20,6 @@ When the __"runner"__ host uses this profile overlay for the first time, follow 
 mkdir profiles
 cd profiles
 git clone https://github.com/kclinden/vmware-vrealize-atuomation-7-x-sles-stig-baseline.git
-cd vmware-vrealize-atuomation-7-x-sles-stig-baseline
-bundle install
-cd ..
 inspec exec vmware-vrealize-atuomation-7-x-sles-stig-baseline --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> -t ssh://<hostname>:<port> --user=<username> --password=<password> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
 For every successive run, follow these steps to always have the latest version of this profile:
