@@ -42,5 +42,13 @@ consecutive invalid attempts using \"pam_tally2.so\", modify the content of the
 # sed -i \"/^[^#]*pam_tally2.so/ c\\auth required pam_tally2.so deny=3
 onerr=fail even_deny_root unlock_time=86400 root_unlock_time=300\"
 /etc/pam.d/common-auth-vmware.local"
+
+file("/etc/pam.d/common-auth").content.to_s.scan(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=([0-9]+).*$/).flatten.each do |entry|
+  describe entry do
+    it { should cmp == 3 }
+  end
+end
+
+
 end
 
