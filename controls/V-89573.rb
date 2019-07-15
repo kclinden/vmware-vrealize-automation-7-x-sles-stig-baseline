@@ -35,7 +35,7 @@ If the password hash does not begins with \"$6$\" for user accounts such as
 # passwd [user account]"
 
 describe shadow do
-  its('password'){ should cmp '$6$' }
+  its('passwords'){ should cmp '$6$' }
 end
 
 end
