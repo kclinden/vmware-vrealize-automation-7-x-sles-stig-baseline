@@ -20,7 +20,7 @@ When the __"runner"__ host uses this profile overlay for the first time, follow 
 mkdir profiles
 cd profiles
 git clone https://github.com/kclinden/vmware-vrealize-atuomation-7-x-sles-stig-baseline.git
-inspec exec vmware-vrealize-atuomation-7-x-sles-stig-baseline --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> -t ssh://<hostname>:<port> --user=<username> --password=<password> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+inspec exec vmware-vrealize-atuomation-7-x-sles-stig-baseline -t ssh://<hostname> --user=<username> --password=<password>
 ```
 For every successive run, follow these steps to always have the latest version of this profile:
 
@@ -28,12 +28,12 @@ For every successive run, follow these steps to always have the latest version o
 cd profiles/vmware-vrealize-atuomation-7-x-sles-stig-baseline
 git pull
 cd ..
-inspec exec vmware-vrealize-atuomation-7-x-sles-stig-baseline --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> -t ssh://<hostname>:<port> --user=<username> --password=<password>] --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+inspec exec vmware-vrealize-atuomation-7-x-sles-stig-baseline -t ssh://<hostname> --user=<username> --password=<password>
 ```
 
 ## Contributing and Getting Help
 
-To report a bug or feature request, please open an [issue](https://<baseline_repo>/issues/new).
+To report a bug or feature request, please open an [issue](https://github.com/kclinden/vmware-vrealize-automation-7-x-sles-stig-baseline/issues/new).
 
 ## Authors
 
