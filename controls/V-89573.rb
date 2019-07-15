@@ -33,5 +33,10 @@ If the password hash does not begins with \"$6$\" for user accounts such as
   tag "fix": "Reset the user password using the following command:
 
 # passwd [user account]"
+
+describe shadow do
+  its('password'){ should cmp '$6$' }
+end
+
 end
 
