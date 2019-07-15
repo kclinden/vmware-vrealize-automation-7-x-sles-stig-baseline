@@ -58,7 +58,6 @@ Restart the auditd service:
   describe file("/etc/audit/audit.rules") do
     its("content") { should match %r{-w /usr/sbin/useradd -p x -k useradd} }
     its("content") { should match %r{-w /usr/sbin/groupadd -p x -k groupadd} }
-
   end
 
 end
