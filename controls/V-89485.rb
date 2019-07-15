@@ -57,5 +57,10 @@ Ciphers aes256-ctr,aes128-ctr"
 /etc/ssh/ssh_config
 
 Save and close the file."
+
+describe ssh_config do
+  its('Ciphers') { should cmp 'aes256-ctr,aes128-ctr' }
+end
+
 end
 
