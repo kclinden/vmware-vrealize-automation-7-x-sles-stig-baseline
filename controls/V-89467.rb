@@ -55,12 +55,11 @@ Add the following to /etc/audit/audit.rules:
 Restart the auditd service:
 # service auditd restart"
 
-  describe auditd.where { key == "useradd" } do
-    its('permissions') { should include ['x'] }
+  describe file("/etc/audit/audit.rules") do
+    its("content") { should match(/^\-w\s+\/etc\/useradd\s+\-p\s+x\s+\-k\suseradd/) }
   end
-
-  describe auditd.where { key == "groupadd" } do
-    its('permissions') { should include ['x'] }
+  describe file("/etc/audit/audit.rules") do
+    its("content") { should match(/^\-w\s+\/etc\/groupadd\s+\-p\s+x\s+\-k\sgroupadd/) }
   end
 
 end
