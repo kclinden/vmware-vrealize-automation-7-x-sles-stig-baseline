@@ -65,5 +65,13 @@ running the following commands:
 
 Restart the auditd service:
 # service auditd restart"
+
+describe file("/etc/audit/audit.rules") do
+  its("content") { should match %r{-w /etc/passwd -p a -k passwd} }
+  its("content") { should match %r{-w /etc/shadow -p a -k shadow} }
+  its("content") { should match %r{-w /etc/group -p a -k group} }
+  its("content") { should match %r{-w /etc/gshadow -p a -k gshadow} }
+end
+
 end
 
