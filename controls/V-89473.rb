@@ -81,7 +81,7 @@ to SSH. This can be done by running the following command:
 # service sshd restart"
 
 describe sshd_config do
-    its('Banner') { should cmp 'Banner /etc/issue' }
+    its('Banner') { should cmp '/etc/issue' }
 end
 
 end
