@@ -56,10 +56,10 @@ Restart the auditd service:
 # service auditd restart"
 
   describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^\-w\s+\/etc\/useradd\s+\-p\s+x\s+\-k\suseradd/) }
+    its("content") { should match(/^\-w\s+\/usr\/sbin\/useradd\s+\-p\s+x\s+\-k\suseradd/) }
   end
   describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^\-w\s+\/etc\/groupadd\s+\-p\s+x\s+\-k\sgroupadd/) }
+    its("content") { should match(/^\-w\s+\/user\/sbin\/groupadd\s+\-p\s+x\s+\-k\sgroupadd/) }
   end
 
 end
