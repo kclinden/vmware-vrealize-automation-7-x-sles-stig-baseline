@@ -48,5 +48,10 @@ command.
 
 sed -i 's/\\(^* *hard *maxlogins\\).*/*              hard    maxlogins
 10/g' /etc/security/limits.conf"
+
+  describe limits_conf('/etc/security/limits.conf') do
+    its('*') { should eq ['hard', 'maxlogins', '10'] }
+  end
+
 end
 
