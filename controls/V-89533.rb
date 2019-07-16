@@ -47,5 +47,10 @@ symblic link):
 Or run the following command to implement all logging requirements:
 
 # /etc/dodscript.sh"
+
+describe file('/etc/audit/audit.rules.STIG') do
+  its('group') {should cmp 'root'}
+end
+
 end
 

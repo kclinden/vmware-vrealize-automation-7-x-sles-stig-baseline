@@ -47,5 +47,10 @@ symblic link):
 Or run the following command to implement all logging requirements:
 
 # /etc/dodscript.sh"
+
+describe file('/etc/audit/audit.rules.STIG') do
+  it { should_not be_more_permissive_than('0640') }
+end
+
 end
 

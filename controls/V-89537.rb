@@ -54,5 +54,10 @@ changes for all users and \"root\". Add the following to
 Or run the following command to implement all logging requirements:
 
 # /etc/dodscript.sh"
+
+describe file("/etc/audit/audit.rules") do
+  its("content") { should match %r{-S chown} } #this may be too exclusive, and might need to be expanded.
+end
+
 end
 

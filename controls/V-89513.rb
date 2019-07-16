@@ -66,5 +66,10 @@ echo '-w /etc/localtime -p wa -k localtime' >> /etc/audit/audit.rules
 Or run the following command to implement all logging requirements:
 
 # /etc/dodscript.sh"
+
+describe file("/etc/audit/audit.rules") do
+  its("content") { should match %r{-w /etc/localtime -p wa -k localtime} }
+end
+
 end
 

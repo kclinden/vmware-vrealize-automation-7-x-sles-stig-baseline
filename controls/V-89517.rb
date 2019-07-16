@@ -63,5 +63,10 @@ If no line is returned, this is a finding."
 Or run the following command to implement all logging requirements:
 
 # /etc/dodscript.sh"
+
+describe file("/etc/audit/audit.rules") do
+  its("content") { should match %r{-S setdomainname} }
+end
+
 end
 

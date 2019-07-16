@@ -56,5 +56,11 @@ file permission changes for all users and \"root\". Add the following to
 Or run the following command to implement all logging requirements:
 
 # /etc/dodscript.sh"
+
+describe file("/etc/audit/audit.rules") do
+  its("content") { should match %r{-S fchown} } #this may be too exclusive, and might need to be expanded.
+  its("content") { should match %r{-S fchown32} } #this may be too exclusive, and might need to be expanded.
+end
+
 end
 

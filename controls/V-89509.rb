@@ -64,5 +64,10 @@ echo '-a exit,always -F arch=b64 -S stime' >> /etc/audit/audit.rules
 Or run the following command to implement all logging requirements:
 
 # /etc/dodscript.sh"
+
+describe file("/etc/audit/audit.rules") do
+  its("content") { should match %r{-S stime} }
+end
+
 end
 

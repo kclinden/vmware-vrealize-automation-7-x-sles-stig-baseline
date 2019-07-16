@@ -59,5 +59,15 @@ If either command lacks output, this is a finding."
 Or run the following command to implement all logging requirements:
 
 # /etc/dodscript.sh"
+
+describe file("/etc/audit/audit.rules") do
+  its("content") { should match %r{-a exit,always -F arch=b64 -S swapon -F exit=-EACCES} }
+  its("content") { should match %r{-a exit,always -F arch=b64 -S creat -F exit=-EACCES} }
+  its("content") { should match %r{-a exit,always -F arch=b64 -S open -F exit=-EACCES} }
+  its("content") { should match %r{-a exit,always -F arch=b64 -S swapon -F exit=-EPERM} }
+  its("content") { should match %r{-a exit,always -F arch=b64 -S creat -F exit=-EPERM} }
+  its("content") { should match %r{-a exit,always -F arch=b64 -S open -F exit=-EPERM} }
+end
+
 end
 
