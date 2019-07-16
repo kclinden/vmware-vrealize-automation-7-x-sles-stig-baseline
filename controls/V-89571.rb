@@ -52,7 +52,11 @@ minlen=14 difok=8 retry=3"
 If \"difok\" was set incorrectly then run the following command to set it to
 \"8\":
 
-# sed -i '/pam_cracklib.so/ s/difok=./difok=8/'
-/etc/pam.d/common-password-vmware.local"
+# sed -i '/pam_cracklib.so/ s/difok=./difok=8/' /etc/pam.d/common-password-vmware.local"
+
+describe file('/etc/pam.d/common-password-vmware.local') do
+  its('content') {should match %r{difok=8} }
+end
+
 end
 

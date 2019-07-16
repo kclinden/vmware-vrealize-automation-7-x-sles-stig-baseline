@@ -37,5 +37,10 @@ list of users that need to be updated to be in compliance.
 # passwd -x 60 [USER]
 
 The DoD requirement is \"60\" days."
+
+describe shadow.where { max_days != 60 } do
+  its('users') { should be_empty }
+end
+
 end
 

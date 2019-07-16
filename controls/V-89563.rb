@@ -39,8 +39,7 @@ command:
 If \"ucredit\" is not set to \"-1\" or not at all, this is a finding.
 
 Expected Result:
-password requisite pam_cracklib.so dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1
-minlen=14 difok=4 retry=3"
+password requisite pam_cracklib.so dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1 minlen=14 difok=4 retry=3"
   tag "fix": "If \"ucredit\" was not set at all in
 /etc/pam.d/common-password-vmware.local then run the following command:
 
@@ -52,5 +51,10 @@ If \"ucredit\" was set incorrectly then run the following command to set it to
 
 # sed -i '/pam_cracklib.so/ s/ucredit=../ucredit=-1/'
 /etc/pam.d/common-password-vmware.local"
+
+describe file('/etc/pam.d/common-password-vmware.local') do
+  its('content') {should match %r{ucredit=-1} }
+end
+
 end
 

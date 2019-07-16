@@ -42,5 +42,10 @@ following line. Replace [DAYS] with the appropriate amount of days.
 
 The DoD requirement is \"60\" days or less (greater than zero, as zero days
 will lock the account immediately)."
+
+describe login_defs do
+  its('PASS_MAX_DAYS') { should cmp 60 }
+end
+
 end
 

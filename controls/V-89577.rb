@@ -38,5 +38,10 @@ the minimum password age, edit the file \"/etc/login.defs\" with the following
 command:
 
 # sed -i \"/^[^#]*PASS_MIN_DAYS/ c\\PASS_MIN_DAYS 1\" /etc/login.defs"
+
+describe login_defs do
+  its('PASS_MIN_DAYS') { should cmp 1 }
+end
+
 end
 

@@ -33,5 +33,11 @@ If  \"CRYPT=sha512\" is not listed, this is a finding."
 following command:
 
 # echo 'CRYPT=sha512'>>/etc/default/passwd"
+
+describe parse_config_file('/etc/default/passwd') do
+  its('CRYPT') { should cmp 'sha512' }
+end
+
+
 end
 

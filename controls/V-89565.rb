@@ -54,5 +54,11 @@ utility.
 Edit /usr/sbin/pam-config permissions to prevent its use:
 
 # chmod 000 /usr/sbin/pam-config"
+
+#pam-config must be 000
+describe file('/usr/sbin/pam-config') do
+  it { should_not be_more_permissive_than('0000') }
+end
+
 end
 

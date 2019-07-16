@@ -51,5 +51,10 @@ If \"dcredit\" was set incorrectly, run the following command:
 
 # sed -i '/pam_cracklib.so/ s/dcredit=../dcredit=-1/'
 /etc/pam.d/common-password-vmware.local"
+
+describe file('/etc/pam.d/common-password-vmware.local') do
+  its('content') {should match %r{dcredit=-1} }
+end
+
 end
 

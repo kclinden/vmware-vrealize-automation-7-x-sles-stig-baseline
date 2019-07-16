@@ -36,5 +36,10 @@ If any results are returned, this is a finding."
 users that need to be updated to be in compliance.
 
 # passwd -n 1 [USER]"
+
+describe shadow do
+  its('min_days.uniq') { should eq [1] }
+end
+
 end
 
