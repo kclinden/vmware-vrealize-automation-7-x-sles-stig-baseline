@@ -55,5 +55,11 @@ TMOUT=900
 readonly TMOUT
 export TMOUT
 mesg n 2>/dev/null"
+
+  describe file('/etc/profile.d/tmout.sh') do
+    it { should exist }
+    its('content') { should match %r{TMOUT=900} }
+  end
+
 end
 

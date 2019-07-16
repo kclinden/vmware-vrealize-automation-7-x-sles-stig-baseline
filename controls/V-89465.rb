@@ -55,5 +55,20 @@ substituting \"system_account_name\" to the appropriate value:
 
 `date -d \"+3 days\" +%Y-%m-%d` gets the \"72\" expiration date for the account
 at the time of running the command."
+
+temporary_accounts = attribute('temporary_accounts')
+
+if temporary_accounts.empty?
+  describe "Temporary accounts" do
+    it { should_be empty }
+  end
+else
+  temporary_accounts.each do |acct|
+    describe command("chage -l #{acct} | grep 'Account expires'") do
+      its('stdout.strip') { should_not match %r{:\s*never} }
+    end
+  end
+end
+
 end
 
