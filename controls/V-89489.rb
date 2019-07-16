@@ -67,5 +67,15 @@ if the email address of the system administrator is on a remote system,
 
 Restart the audit service:
 # service auditd restart"
+
+describe auditd_conf('path') do
+  its('space_left_action') { should cmp 'syslog' }
+  its('space_left_action') { should_not cmp 'ignore' }
+  its('space_left_action') { should_not cmp 'suspend' }
+  its('space_left_action') { should_not cmp 'single' }
+  its('space_left_action') { should_not cmp 'halt' }
+  its('space_left_action') { should_not cmp '' }
+end
+
 end
 

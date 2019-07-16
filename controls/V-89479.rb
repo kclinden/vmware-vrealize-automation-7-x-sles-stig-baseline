@@ -53,5 +53,11 @@ command:
 # sed -i 's/^.*\\bClientAliveInterval\\b.*$/ClientAliveInterval 900/'
 /etc/ssh/sshd_config; sed -i
 's/^.*\\bClientAliveCountMax\\b.*$/ClientAliveCountMax 0/' /etc/ssh/sshd_config"
+
+describe sshd_config do
+  its('ClientAliveInterval') { should cmp 900 }
+  its('ClientAliveCountMax') { should cmp 0 }
+end
+
 end
 
