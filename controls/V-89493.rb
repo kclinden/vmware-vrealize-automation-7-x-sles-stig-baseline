@@ -41,5 +41,10 @@ Procedure:
 # chown root <audit log file>
 
 # chown root /var/log/audit/audit.log"
+
+describe file('/var/log/audit/audit.log') do
+  its('owner') { should eq 'root' }
+end
+
 end
 

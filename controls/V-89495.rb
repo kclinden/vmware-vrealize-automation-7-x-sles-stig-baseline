@@ -42,5 +42,14 @@ Procedure:
 # chgrp root <audit log file>
 
 # chgrp root /var/log/audit/audit.log"
+
+describe.one file('/var/log/audit/audit.log') do
+  its('group') { should eq 'root' }
+end
+
+describe file('/var/log/audit/audit.log') do
+  its('group') { should eq 'admin' }
+end
+
 end
 

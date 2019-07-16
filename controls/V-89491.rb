@@ -71,5 +71,24 @@ SYSLOG\" /etc/audit/auditd.conf
 
 For certain systems, the need for availability outweighs the need to log all
 actions, and a different setting should be determined."
+
+describe auditd_conf('/etc/audit/auditd.conf') do
+  #disk_full_action
+  its('disk_full_action') { should_not cmp '' }
+  its('disk_full_action') { should_not cmp 'suspend' }
+  its('disk_full_action') { should_not cmp 'ignore' }
+  its('disk_full_action') { should cmp 'syslog' }
+  #disk_error_action
+  its('disk_error_action') { should_not cmp '' }
+  its('disk_error_action') { should_not cmp 'suspend' }
+  its('disk_error_action') { should_not cmp 'ignore' }
+  its('disk_error_action') { should cmp 'syslog' }
+  #admin_space_left_action
+  its('admin_space_left_action') { should_not cmp '' }
+  its('admin_space_left_action') { should_not cmp 'suspend' }
+  its('admin_space_left_action') { should_not cmp 'ignore' }
+  its('admin_space_left_action') { should cmp 'syslog' }
+end
+
 end
 
