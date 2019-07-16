@@ -37,8 +37,8 @@ users that need to be updated to be in compliance.
 
 # passwd -n 1 [USER]"
 
-describe shadow do
-  its('min_days.uniq') { should eq [1] }
+describe shadow.where { min_days != 1 } do
+  its('users') { should be_empty }
 end
 
 end
