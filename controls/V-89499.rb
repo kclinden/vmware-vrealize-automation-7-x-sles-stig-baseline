@@ -46,5 +46,10 @@ finding."
   tag "fix": "Change the mode of the audit log file(s):
 
 # chmod 0640 <audit log file>"
+
+describe file('/var/log/audit/audit.log') do
+  it { should_not be_more_permissive_than('0640') }
+end
+
 end
 

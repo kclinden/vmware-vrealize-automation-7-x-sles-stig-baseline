@@ -46,5 +46,10 @@ If any are more permissive, this is a finding."
 command:
 
 # chmod 700 <audit log directory>"
+
+describe directory('/var/log/audit') do
+  it { should_not be_more_permissive_than('0700') }
+end
+
 end
 
