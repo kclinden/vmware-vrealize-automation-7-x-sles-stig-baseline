@@ -67,5 +67,11 @@ auid!=4294967295' >> /etc/audit/audit.rules
 Or run the following command to implement all logging requirements:
 
 # /etc/dodscript.sh"
+
+describe file("/etc/audit/audit.rules") do
+  its("content") { should match %r{-a exit,always -F arch=b64 -S settimeofday -S adjtimex -F auid=0} }
+  its("content") { should match %r{-a exit,always -F arch=b64 -S settimeofday -S adjtimex -F auid\>=500 -F auid!=4294967295} }
+end
+
 end
 

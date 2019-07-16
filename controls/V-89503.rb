@@ -65,5 +65,10 @@ echo '-w /etc/audit/auditd.conf' >> /etc/audit/audit.rules
 Or run the following command to implement all logging requirements:
 
 # /etc/dodscript.sh"
+
+  describe file("/etc/audit/audit.rules") do
+    its("content") { should match %r{-w /etc/audit/auditd.conf} }
+  end
+
 end
 
