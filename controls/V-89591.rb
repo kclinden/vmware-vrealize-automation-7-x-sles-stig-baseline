@@ -52,5 +52,10 @@ If the expected result is not displayed, this is a finding."
 user mode use the following command:
 
 # echo '~~:S:respawn:/sbin/sulogin' >> /etc/inittab"
+
+describe file('/etc/inittab') do
+  its ('content') {should match %r{~~:S:respawn:/sbin/sulogin} }
+end
+
 end
 

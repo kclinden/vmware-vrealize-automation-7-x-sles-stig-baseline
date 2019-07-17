@@ -43,8 +43,7 @@ syscall=lchown,sethostname,init_module,delete_module,setxattr,lsetxattr,fsetxatt
 
 If no lines are returned, this is a finding."
   tag "fix": "At a minimum, the SLES for vRealize audit system should collect
-file permission changes for all users and \"root\". Add the following to
-\"/etc/audit/audit.rules\":
+file permission changes for all users and \"root\". Add the following to \"/etc/audit/audit.rules\":
 
 -a always,exit -F arch=b64 -S removexattr
 

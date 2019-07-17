@@ -35,9 +35,9 @@ If the password hash does not begins with \"$6$\" for user accounts such as
 # passwd [user account]"
 
 #Need to rework this. It currently will fail since several accounts have * or !
-#describe shadow do
-#  its('passwords'){ should cmp '$6$' }
-#end
+describe shadow.where{ password !~ /^[!*]/} do
+  its('passwords'){ should match %r{^\$6\$.*} }
+end
 
 end
 

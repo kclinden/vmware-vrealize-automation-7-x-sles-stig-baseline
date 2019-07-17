@@ -70,5 +70,10 @@ Activate the Protect Boot Loader with Password option with a click and type in
 the password twice.
 
 Click \"OK\" twice to save the changes."
+
+describe file('/boot/grub/menu.lst') do
+  its('content') { should match(%r{^password\s--md5\s\$1\$}) } #Need to rework this to use actual regex.
+end
+
 end
 
