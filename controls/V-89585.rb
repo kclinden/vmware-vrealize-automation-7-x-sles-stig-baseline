@@ -45,5 +45,10 @@ If \"remember\" was set incorrectly, run the following command to set it to
 
 # sed -i '/pam_cracklib.so/ s/remember=./remember=5/'
 /etc/pam.d/common-password-vmware.local"
+
+describe file('/etc/pam.d/common-password-vmware.local') do
+  its('content') {should match %r{remember=5} }
+end
+
 end
 

@@ -36,5 +36,10 @@ If \"/etc/security/opasswd\" does not exist, this is a finding."
 # touch /etc/security/opasswd
 # chown root:root /etc/security/opasswd
 # chmod 0600 /etc/security/opasswd"
+
+describe file('/etc/security/opasswd') do
+  it { should exist }
+end
+
 end
 

@@ -49,5 +49,10 @@ If \"minlen\" was set incorrectly then run the following command to set it to
 
 # sed -i '/pam_cracklib.so/ s/minlen=../minlen=15/'
 /etc/pam.d/common-password-vmware.local"
+
+describe file('/etc/pam.d/common-password-vmware.local') do
+  its('content') {should match %r{minlen=15} }
+end
+
 end
 
