@@ -34,7 +34,8 @@ If the password hash does not begins with \"$6$\" for user accounts such as
 
 # passwd [user account]"
 
-bad_users = inspec.shadow.where { password != "*" && password != "!" && password !~ /\$6\$/ }.users
+#Get all users where password is not !, *, or $6$...
+bad_users = inspec.shadow.where { password !~ /^[*!]$|\$6\$/ }.users
 
 describe 'Password hashes in /etc/shadow' do
   it 'should only contain SHA512 hashes' do
