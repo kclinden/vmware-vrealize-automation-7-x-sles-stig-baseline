@@ -34,10 +34,15 @@ If the password hash does not begins with \"$6$\" for user accounts such as
 
 # passwd [user account]"
 
-#Need to rework this. It currently will fail since several accounts have * or !
-describe shadow.where{ password !~ /^[!*]/} do
-  its('passwords'){ should match %r{^\$6\$.*} }
+bad_users = inspec.shadow.where { password =~ /[^!*]/ && password !~ /\$6\$/ }.users
+
+describe 'Password hashes in /etc/shadow' do
+  it 'should only contain SHA512 hashes' do
+    failure_message = "Users without SHA512 hashes: #{bad_users.join(', ')}"
+    expect(bad_users).to be_empty, failure_message
+  end
 end
+
 
 end
 

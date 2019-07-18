@@ -72,7 +72,7 @@ the password twice.
 Click \"OK\" twice to save the changes."
 
 describe file('/boot/grub/menu.lst') do
-  its('content') { should match(%r{^password\s--md5\s\$1\$}) } #Need to rework this to use actual regex.
+  its('content') { should match(%r{^password\s--md5\s\$1\$}) }
 end
 
 end
