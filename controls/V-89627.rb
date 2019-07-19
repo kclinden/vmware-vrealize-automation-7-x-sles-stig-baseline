@@ -36,10 +36,10 @@ This is a finding if any of the above files or directories are not owned by
 # chown root /etc/xinetd.conf /etc/xinetd.d/*"
 
 describe file('/etc/xinetd.conf') do 
-  its('owner') {should be 'root'}
+  its('owner') {should be 'root'} # doesn't work, wtf...
 end
 
-describe file('/etc/xinetd.d') do 
+describe directory('/etc/xinetd.d') do 
   its('owner') {should be 'root'}
 end
 

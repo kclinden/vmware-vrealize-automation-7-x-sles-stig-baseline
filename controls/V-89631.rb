@@ -32,5 +32,10 @@ finding."
   tag "fix": "Change the mode of the directory:
 
 # chmod 0755 /etc/xinetd.d"
+
+describe directory('/etc/xinetd.d') do
+  it{should_not be_more_permissive_than '0755'}
+end
+
 end
 
