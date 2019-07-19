@@ -32,5 +32,10 @@ finding."
   tag "fix": "Change the mode of the menu.lst file to \"0600\":
 
 # chmod 0600 /boot/grub/menu.lst"
+
+describe file('/boot/grub/menu.lst') do
+  it { should_not be_more_permissive_than('0600') }
+end
+
 end
 

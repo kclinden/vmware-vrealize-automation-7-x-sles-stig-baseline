@@ -31,5 +31,10 @@ If the owner of the file is not \"root\", this is a finding."
   tag "fix": "Change the ownership of the file:
 
 # chown root /boot/grub/menu.lst"
+
+describe file('/boot/grub/menu.lst') do
+  its('owner'){should cmp 'root'}
+end
+
 end
 

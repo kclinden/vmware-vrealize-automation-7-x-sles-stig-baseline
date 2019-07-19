@@ -33,5 +33,10 @@ If the group-owner of the file is not \"root\", \"bin\", \"sys\", or
   tag "fix": "Change the group-ownership of the file:
 
 # chgrp root /boot/grub/menu.lst"
+
+describe file('/boot/grub/menu.lst') do
+  its('group'){should cmp 'root'}
+end
+
 end
 
