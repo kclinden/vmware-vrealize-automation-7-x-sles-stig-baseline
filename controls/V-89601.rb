@@ -26,16 +26,15 @@ load a protocol handler by opening a socket using the protocol."
   tag "check": "Verify the Bluetooth protocol handler is prevented from dynamic
 loading:
 
-# grep \"install bluetooth /bin/true\" /etc/modprobe.conf
-/etc/modprobe.conf.local /etc/modprobe.d/*
+# grep \"install bluetooth /bin/true\" /etc/modprobe.conf /etc/modprobe.conf.local /etc/modprobe.d/*
 
 If no result is returned, this is a finding."
   tag "fix": "Prevent the Bluetooth protocol handler for dynamic loading:
 
 # echo \"install bluetooth /bin/true\" >> /etc/modprobe.conf.local"
 
-describe file('/etc/modprobe.conf') do
-  its('content') {should contain %r{install bluetooth /bin/true} }
+describe command('grep "install bluetooth /bin/true" /etc/modprobe.conf /etc/modprobe.conf.local /etc/modprobe.d/*') do
+  its('stdout') {should_not eq ''}
 end
 
 
