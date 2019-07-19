@@ -29,5 +29,10 @@ Check if the directory /proc/bus/usb exists.
 If the directory /proc/bus/usb exists, this is a finding."
   tag "fix": "Edit the grub bootloader file /boot/grub/menu.lst by appending
 the \"nousb\" parameter to the kernel boot line."
+
+describe directory('/proc/bus/usb') do
+  it{should_not exist}
+end
+
 end
 

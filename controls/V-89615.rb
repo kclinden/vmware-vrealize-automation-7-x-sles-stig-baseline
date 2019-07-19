@@ -31,5 +31,10 @@ If there is a \"tftp\" package listed, this is a finding."
   tag "fix": "To remove the \"tftp\" package use the following command:
 
 rpm -e tftp"
+
+describe package('tftp') do
+  it { should_not be_installed }
+end
+
 end
 

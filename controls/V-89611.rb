@@ -29,5 +29,10 @@ If there is a \"ypserv\" package listed, this is a finding."
   tag "fix": "To remove the \"telnet-server\" package use the following command:
 
 rpm -e ypserv"
+
+describe package('ypserv') do
+  it { should_not be_installed }
+end
+
 end
 

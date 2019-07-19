@@ -37,5 +37,10 @@ If no result is returned, this is a finding."
   tag "fix": "Prevent the use of RDS protocol handler for dynamic loading:
 
 # echo \"install rds /bin/true\" >> /etc/modprobe.conf.local"
+
+describe command('grep "install rds /bin/true" /etc/modprobe.conf /etc/modprobe.conf.local /etc/modprobe.d/*') do
+  its('stdout') {should_not eq ''}
+end
+
 end
 

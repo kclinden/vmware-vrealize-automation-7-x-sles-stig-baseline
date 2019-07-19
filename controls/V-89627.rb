@@ -34,5 +34,15 @@ This is a finding if any of the above files or directories are not owned by
   tag "fix": "Change the owner of the \"xinetd\" configuration files:
 
 # chown root /etc/xinetd.conf /etc/xinetd.d/*"
+
+describe file('/etc/xinetd.conf') do 
+  its('owner') {should be 'root'}
+end
+
+describe file('/etc/xinetd.d') do 
+  its('owner') {should be 'root'}
+end
+
+
 end
 

@@ -29,5 +29,10 @@ If there is a \"telnet-server\" package listed, this is a finding."
   tag "fix": "To remove the \"telnet-server\" package use the following command:
 
 rpm -e telnet-server"
+
+describe package('telnet-server') do
+  it { should_not be_installed }
+end
+
 end
 

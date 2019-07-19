@@ -33,5 +33,11 @@ If no result is returned, this is a finding."
   tag "fix": "Prevent the Bluetooth protocol handler for dynamic loading:
 
 # echo \"install bluetooth /bin/true\" >> /etc/modprobe.conf.local"
+
+describe file('/etc/modprobe.conf') do
+  its('content') {should contain %r{install bluetooth /bin/true} }
+end
+
+
 end
 

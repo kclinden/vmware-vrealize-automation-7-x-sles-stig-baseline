@@ -35,5 +35,15 @@ If a file or directory is not group-owned by \"root\", \"bin\", \"sys\", or
 directories:
 
 # chgrp -R root /etc/xinetd.conf /etc/xinetd.d"
+
+#describe file('/etc/xinetd.conf') do 
+#  its('group') {should cmp 'root'} #not working, but why
+#end
+
+describe directory('/etc/xinetd.d') do 
+  its('group') {should cmp 'root'} #works!
+end
+
+
 end
 

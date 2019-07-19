@@ -30,5 +30,10 @@ If a \"yast2-tftp-server\" package is listed, this is a finding."
 command:
 
 rpm -e yast2-tftp-server"
+
+describe package('yast2-tftp-server') do
+  it { should_not be_installed }
+end
+
 end
 

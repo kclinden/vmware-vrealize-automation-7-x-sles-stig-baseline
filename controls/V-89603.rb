@@ -27,12 +27,16 @@ applicable.
 
 Check if \"usb-storage\" is prevented from loading:
 
-# grep \"install usb-storage /bin/true\" /etc/modprobe.conf
-/etc/modprobe.conf.local /etc/modprobe.d/*
+# grep \"install usb-storage /bin/true\" /etc/modprobe.conf /etc/modprobe.conf.local /etc/modprobe.d/*
 
 If no results are returned, this is a finding."
   tag "fix": "Prevent the \"usb-storage\" module from loading:
 
 # echo \"install usb-storage /bin/true\" >> /etc/modprobe.conf.local"
+
+describe command('grep "usb-storage /bin/true" /etc/modprobe.conf /etc/modprobe.conf.local /etc/modprobe.d/*') do
+  its('stdout') {should_not eq ''}
+end
+
 end
 

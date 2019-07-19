@@ -31,5 +31,10 @@ If an \"rsh-server\" package is listed, this is a finding."
 command:
 
 rpm -e rsh-server"
+
+describe package('rsh-server') do
+  it { should_not be_installed }
+end
+
 end
 
