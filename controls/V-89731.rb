@@ -46,5 +46,10 @@ If \"-rw-r-----\" is not returned as a result, this is a finding."
 by running the following command:
 
 # chmod 0640 /var/log/messages"
+
+describe file('/var/log/messages') do
+  it { should_not be_more_permissive_than('0640') }
+end
+
 end
 

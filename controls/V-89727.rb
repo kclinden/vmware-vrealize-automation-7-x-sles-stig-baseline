@@ -46,5 +46,10 @@ If \"root\" is not returned as a result, this is a finding."
 running the following command:
 
 # chgrp root /var/log/messages"
+
+describe file('/var/log/messages') do
+  its('group') { should cmp 'root'}
+end
+
 end
 
