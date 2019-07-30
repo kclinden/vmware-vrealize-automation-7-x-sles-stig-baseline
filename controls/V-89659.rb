@@ -32,5 +32,19 @@ If any mail log file is not owned by \"root\", this is a finding."
   tag "fix": "Change the ownership of the sendmail log files:
 
 # chown root <sendmail log file>"
+
+describe file('/var/log/mail') do
+  its('owner') {should cmp 'root'}
+end
+describe file('/var/log/mail.info') do
+  its('owner') {should cmp 'root'}
+end
+describe file('/var/log/mail.warn') do
+  its('owner') {should cmp 'root'}
+end
+describe file('/var/log/mail.err') do
+  its('owner') {should cmp 'root'}
+end
+
 end
 

@@ -46,5 +46,10 @@ for organizational users by running the following command:
 If output is produced, this is a finding."
   tag "fix": "Edit the file /etc/passwd and provide each organizational user
 account that has a duplicate UID with a unique UID."
+
+describe command('awk -F ":" \'list[$3]++{print $1, $3}\' /etc/passwd') do
+  its('stdout') {should cmp ''}
+end
+
 end
 

@@ -32,5 +32,15 @@ If all the files are not owned by \"root\", this is a finding."
 
 # chown root /etc/aliases
 # chown root /etc/aliases.db"
+
+describe file('/etc/aliases') do
+  its('owner') {should cmp 'root'}
+end
+
+describe file('/etc/aliases.db') do
+  its('owner') {should cmp 'root'}
+end
+
+
 end
 

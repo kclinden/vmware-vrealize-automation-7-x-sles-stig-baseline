@@ -31,5 +31,14 @@ If the files have a mode more permissive than \"0644\", this is a finding."
   tag "fix": "Change the mode of the alias files to \"0644\":
 
 # chmod 0644 /etc/aliases /etc/aliases.db"
+
+describe file('/etc/aliases') do
+  it { should_not be_more_permissive_than('0644') }
+end
+
+describe file('/etc/aliases.db') do
+  it { should_not be_more_permissive_than('0644') }
+end
+
 end
 

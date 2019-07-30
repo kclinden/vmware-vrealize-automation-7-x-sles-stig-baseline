@@ -32,5 +32,19 @@ If the log file permissions are greater than \"0644\", this is a finding."
   tag "fix": "Change the mode of the sendmail log files:
 
 # chmod 0644 <sendmail log file>"
+
+describe file('/var/log/mail') do
+  it { should_not be_more_permissive_than('0644') }
+end
+describe file('/var/log/mail.info') do
+  it { should_not be_more_permissive_than('0644') }
+end
+describe file('/var/log/mail.warn') do
+it { should_not be_more_permissive_than('0644') }
+end
+describe file('/var/log/mail.err') do
+it { should_not be_more_permissive_than('0644') }
+end
+
 end
 

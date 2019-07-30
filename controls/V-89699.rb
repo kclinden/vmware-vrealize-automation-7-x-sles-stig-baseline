@@ -51,5 +51,10 @@ Replace [VALUE] in the command with any integer from the range 0<[VALUE]<= 35.
 DoD recommendation is \"35\" days, but a lower value is acceptable. The value
 \"-1\" will disable this feature and \"0\" will disable the account immediately
 after the password expires."
+
+describe parse_config_file('/etc/default/useradd') do
+  its('INACTIVE') { should cmp 35 }
+end
+
 end
 

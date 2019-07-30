@@ -28,12 +28,16 @@ not applicable.
 
 Check if the firewire module is not disabled:
 
-# grep \"install ieee1394 /bin/true\" /etc/modprobe.conf
-/etc/modprobe.conf.local /etc/modprobe.d/*
+# grep \"install ieee1394 /bin/true\" /etc/modprobe.conf /etc/modprobe.conf.local /etc/modprobe.d/*
 
 If no results are returned, this is a finding."
   tag "fix": "Prevent the SLES for vRealize from loading the firewire module:
 
 # echo \"install ieee1394 /bin/true\" >> /etc/modprobe.conf.local"
+
+describe command('grep "install ieee1394 /bin/true" /etc/modprobe.conf /etc/modprobe.conf.local /etc/modprobe.d/*') do
+  its('stdout') {should_not eq ''}
+end
+
 end
 

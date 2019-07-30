@@ -32,5 +32,14 @@ If the files are not group-owned by \"root\", this is a finding."
 
 # chgrp root /etc/aliases
 # chgrp root /etc/aliases.db"
+
+describe file('/etc/aliases') do
+  its('group') {should cmp 'root'}
+end
+
+describe file('/etc/aliases.db') do
+  its('group') {should cmp 'root'}
+end
+
 end
 

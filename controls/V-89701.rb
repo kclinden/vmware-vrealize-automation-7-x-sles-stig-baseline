@@ -55,5 +55,30 @@ variable setting so that it contains:
 CRYPT_FILES=sha256
 OR
 CRYPT_FILES=sha512"
+
+#CRYPT
+describe.one do
+  describe parse_config_file('/etc/default/passwd') do
+    its('CRYPT') { should cmp 'SHA512' }
+  end
+
+  describe parse_config_file('/etc/default/passwd') do
+    its('CRYPT') { should cmp 'SHA256'}
+  end
+
+end
+
+#CRYPT_FILES
+describe.one do
+  describe parse_config_file('/etc/default/passwd') do
+    its('CRYPT_FILES') { should cmp 'SHA512' }
+  end
+
+  describe parse_config_file('/etc/default/passwd') do
+    its('CRYPT_FILES') { should cmp 'SHA256'}
+  end
+
+end
+
 end
 

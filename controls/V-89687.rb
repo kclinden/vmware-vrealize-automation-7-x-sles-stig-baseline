@@ -28,5 +28,17 @@ parameters on the system by exchanging information with a DHCP server."
 If any configuration is found, this is a finding."
   tag "fix": "Edit the /etc/sysconfig/network/ifcfg-* file(s) and change the
 \"bootproto\" setting to \"static\"."
+
+#check all with grep
+describe command('grep -i bootproto=dhcp4 /etc/sysconfig/network/ifcfg-*') do
+  its('stdout') {should cmp ''}
+end
+
+#explicitly check configuration of eth0
+describe parse_config_file('/etc/sysconfig/network/ifcfg-eth0') do
+  its('BOOTPROTO') { should_not eq 'dhcp4' }
+end
+
+
 end
 
