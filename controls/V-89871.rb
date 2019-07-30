@@ -53,5 +53,16 @@ Edit \"/etc/pam.d/common-auth\" and add a \"pam_faildelay\" entry if one does
 not exist, such as:
 
 auth optional pam_faildelay.so"
+
+describe login_defs do
+  its('FAIL_DELAY') { should cmp '4' }
+end
+
+describe file('/etc/pam.d/common-auth') do
+  its('content'){should match %r{auth\toptional\tpam_faildelay.so}}
+end
+
+
+
 end
 

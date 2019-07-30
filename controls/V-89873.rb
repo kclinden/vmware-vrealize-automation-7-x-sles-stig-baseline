@@ -49,5 +49,10 @@ The typical configuration looks something like this:
 FAIL_DELAY    4
 
 Save the changes made to the file."
+
+describe login_defs do
+  its('FAIL_DELAY') { should cmp '4' }
+end
+
 end
 
