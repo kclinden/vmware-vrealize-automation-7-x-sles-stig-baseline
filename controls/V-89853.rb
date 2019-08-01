@@ -51,5 +51,10 @@ postrotate
 /sbin/service auditd restart 2> /dev/null > /dev/null || true
 endscript
 }"
+
+describe file('/etc/logrotate.d/audit') do
+  its('content') {should cmp %r{daily}}
+end
+
 end
 
