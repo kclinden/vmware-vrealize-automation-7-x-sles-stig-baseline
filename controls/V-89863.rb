@@ -44,5 +44,10 @@ server:
 #
 destination logserver { udp(\"10.10.10.10\" port(514)); };
 log { source(src); destination(logserver); };"
+
+describe parse_config_file('/etc/syslog-ng/syslog-ng.conf') do
+  its('logserver'){should_not cmp ''}
+end
+
 end
 
