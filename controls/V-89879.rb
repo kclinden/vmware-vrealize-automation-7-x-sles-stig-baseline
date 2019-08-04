@@ -35,5 +35,10 @@ world-writable files this becomes a Severity Code I finding."
   tag "fix": "To configure the correct UMASK setting run the following command:
 
 # sed -i \"/^[^#]*UMASK/ c\\UMASK 077\" /etc/login.defs"
+
+describe login_defs do
+  its('UMASK') { should eq '077' }
+end
+
 end
 
