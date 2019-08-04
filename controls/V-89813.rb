@@ -64,5 +64,10 @@ Save and close the file.
 Restart the sshd process:
 
 # service sshd restart"
+
+describe sshd_config do
+  its('Ciphers') {should cmp 'aes256-ctr,aes128-ctr'}
+end
+
 end
 

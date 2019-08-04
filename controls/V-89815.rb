@@ -49,5 +49,10 @@ If no lines are returned, or the returned MACs list contains any MAC other than
 \"hmac-sha1\", this is a finding."
   tag "fix": "Edit the SSH daemon configuration and remove any MACs other than
 \"hmac-sha1\". If necessary, add a \"MACs\" line."
+
+describe sshd_config do
+  its('macs') {should cmp 'hmac-sha1'}
+end
+
 end
 

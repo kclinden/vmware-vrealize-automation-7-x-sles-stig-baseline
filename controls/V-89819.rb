@@ -39,5 +39,10 @@ finding."
   tag "fix": "Run the following command:
 
 #sysctl kernel.randomize_va_space=1"
+
+describe kernel_parameter('kernel.randomize_va_space') do
+  its('value') { should eq 1 }
+end
+
 end
 

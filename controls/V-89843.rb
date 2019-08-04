@@ -44,5 +44,11 @@ commands:
 
 # chkconfig auditd on
 # service auditd start"
+
+describe service('auditd') do
+  it {should be_running}
+  it {should be_enabled}
+end
+
 end
 

@@ -56,5 +56,10 @@ for tcp_syncookies:
 Reload sysctl to verify the new change:
 
 # sysctl -p"
+
+describe kernel_parameter('net.ipv4.tcp_syncookies') do
+  its('value') { should eq 1 }
+end
+
 end
 
