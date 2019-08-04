@@ -44,5 +44,10 @@ words for passwords. Edit the file \"/etc/pam.d/common-password\". Configure
 password  required pam_cracklib.so
 
 Save the changes made to the file \"/etc/pam.d/common-password\"."
+
+describe pam('/etc/pam.d/common-password') do
+  its('rules') { should match_pam_rule('password  required pam_cracklib.so' }
+end
+
 end
 
