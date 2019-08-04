@@ -40,5 +40,10 @@ finding."
   tag "fix": "Edit \"/etc/pam.d/common-password\" and configure
 \"pam_cracklib\" by adding a line such as \"password requisite
 pam_cracklib.so\""
+
+describe pam('/etc/pam.d/common-password') do
+  its('lines') { should match_pam_rule('password requisite|required pam_cracklib.so')}
+end
+
 end
 

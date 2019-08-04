@@ -46,5 +46,10 @@ If it is not, this is a finding."
   tag "fix": "Configure the SLES for vRealize in accordance with the security
 configuration settings based on DoD security configuration or implementation
 guidance, including STIGs, NSA configuration guides, CTOs, and DTMs."
+
+describe "Manual test" do
+  skip "This control must be reviewed manually"
+end
+
 end
 

@@ -39,7 +39,11 @@ If the line is not present, this is a finding."
 \"4\" seconds between logon prompts following a failed logon attempt with the
 following command:
 
-# sed -i \"/^[^#]*pam_faildelay.so/ c\\auth required pam_faildelay.so
-delay=4000000\" /etc/pam.d/common-auth-vmware.local"
+# sed -i \"/^[^#]*pam_faildelay.so/ c\\auth required pam_faildelay.so delay=4000000\" /etc/pam.d/common-auth-vmware.local"
+
+describe pam('/etc/pam.d/common-auth-vmware.local') do
+  its('lines') { should match_pam_rule('auth required pam_faildelay.so delay=4000000')}
+end
+
 end
 

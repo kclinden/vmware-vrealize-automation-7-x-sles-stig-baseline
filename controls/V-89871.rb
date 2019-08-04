@@ -58,8 +58,8 @@ describe login_defs do
   its('FAIL_DELAY') { should cmp '4' }
 end
 
-describe file('/etc/pam.d/common-auth') do
-  its('content'){should match %r{auth\toptional\tpam_faildelay.so}}
+describe pam('/etc/pam.d/common-auth') do
+  its('lines') { should match_pam_rule('auth .* pam_faildelay.so')}
 end
 
 

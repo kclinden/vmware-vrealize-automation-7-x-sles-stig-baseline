@@ -40,5 +40,15 @@ as:
 password include common-password
 
 Save the changes made to the file."
+
+describe pam('/etc/pam.d/passwd') do
+  its('lines') { should match_pam_rule('password (required|requisite|include) common-password') } #not working for some reason. 
+end
+
+describe file('/etc/pam.d/passwd') do
+  its('content') {should cmp %r{password include common-password}} #not working for some reason. Seems to be reading a different file.
+end
+
+
 end
 
