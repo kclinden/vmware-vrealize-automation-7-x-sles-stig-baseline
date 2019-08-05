@@ -33,7 +33,7 @@ hardware providing the greater strength of mechanism.
 compiled in by default. Verify that the option was specified when the kernel
 was built:
 
-# grep -i "execute" /var/log/boot.msg
+# grep -i \"execute\" /var/log/boot.msg
 
 The message: \"NX (Execute Disable) protection: active\" will be written in the
 boot log when compiled in the kernel. This is the default for x86_64.
