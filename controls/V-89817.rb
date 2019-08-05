@@ -52,7 +52,7 @@ of each kernel line entry. A system restart is required to implement this
 change."
 
 describe file('/boot/grub/menu.lst') do
-  its('content') { should cmp %r{noexec=on} } 
+  its('content') { should cmp %r{noexec=on} } #only checks existence of the file. Not a strong check.
 end
 
 end
