@@ -36,5 +36,10 @@ If any results are returned, this is a finding."
 
 Add this command to a startup script, or remove the configuration creating the
 tunnel."
+
+describe command('ip tun list | grep "remote any" | grep "ipv6/ip"') do
+ its('stdout') {should eq ""}
+end
+
 end
 

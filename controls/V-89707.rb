@@ -49,5 +49,10 @@ UNIQUE_USER_ID is a unique numerical value that must be non-negative. USERNAME
 is the username of the user whose user ID is to be changed.
 
 # usermod -u [UNIQUE_USER_ID] [USERNAME]"
+
+describe command('awk -F: \'{print $3}\' /etc/passwd | sort | uniq -d') do
+ its('stdout') { should eq ''}
+end
+
 end
 

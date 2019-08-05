@@ -32,5 +32,11 @@ If the Teredo process is running, this is a finding."
 Edit startup scripts to prevent the service from running on startup.
 
 For Appliance OS, Teredo is not included by default, this is not a finding."
+
+describe service('teredo') do
+  it {should_not be_running}
+  it {should_not be_enabled}
+end
+
 end
 

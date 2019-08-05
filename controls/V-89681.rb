@@ -39,5 +39,10 @@ finding.
 
 If the file has a value of \"1\", proxy NDP is enabled, and this is a finding."
   tag "fix": "Disable proxy NDP on the system."
+
+describe kernel_parameter('net.ipv6.conf.eth0.proxy_ndp') do
+  its('value') { should eq 0 }
+end
+
 end
 

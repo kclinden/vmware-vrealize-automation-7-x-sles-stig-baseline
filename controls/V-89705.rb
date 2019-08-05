@@ -29,5 +29,10 @@ a user having unintended rights."
 If a line is returned, this is a finding."
   tag "fix": "Add a group to the system for each GID referenced without a
 corresponding group."
+
+describe command('pwck -rq') do
+ its('stdout') { should eq ''}
+end
+
 end
 

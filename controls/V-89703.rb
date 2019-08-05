@@ -43,5 +43,10 @@ If there are no duplicate names, no line will be returned.
 
 If a line is returned, this is a finding."
   tag "fix": "Change usernames, or delete accounts, so each has a unique name."
+
+describe command('pwck -rq') do
+ its('stdout') { should eq ''}
+end
+
 end
 

@@ -26,12 +26,16 @@ load a protocol handler by opening a socket using the protocol."
   tag "check": "Check that the DECnet protocol handler is prevented from
 dynamic loading:
 
-# grep \"install decnet /bin/true\" /etc/modprobe.conf /etc/modprobe.conf.local
-/etc/modprobe.d/*
+# grep \"install decnet /bin/true\" /etc/modprobe.conf /etc/modprobe.conf.local /etc/modprobe.d/*
 
 If no result is returned, this is a finding."
   tag "fix": "Prevent the DECnet protocol handler for dynamic loading:
 
 # echo \"install decnet /bin/true\" >> /etc/modprobe.conf.local"
+
+describe command('grep "install decnet /bin/true" /etc/modprobe.conf /etc/modprobe.conf.local /etc/modprobe.d/*') do
+  its('stdout') {should_not eq ''}
+end
+
 end
 
