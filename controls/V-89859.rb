@@ -42,5 +42,10 @@ capture kernel module loading and unloading events:
 OR
 
 # /etc/dodscript.sh"
+
+describe file('/etc/audit/audit.rules') do
+  its('content') {should cmp %r{-w /sbin/insmod -p x}}
+end
+
 end
 

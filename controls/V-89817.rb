@@ -33,7 +33,7 @@ hardware providing the greater strength of mechanism.
 compiled in by default. Verify that the option was specified when the kernel
 was built:
 
-# grep -i \"execute\" /var/log/boot.msg
+# grep -i "execute" /var/log/boot.msg
 
 The message: \"NX (Execute Disable) protection: active\" will be written in the
 boot log when compiled in the kernel. This is the default for x86_64.
@@ -50,5 +50,10 @@ If non-executable program stacks have not been configured, this is a finding."
   tag "fix": "Edit the /boot/grub/menu.lst file and add “noexec=on” to the end
 of each kernel line entry. A system restart is required to implement this
 change."
+
+describe file('/boot/grub/menu.lst') do
+  its('content') { should cmp %r{noexec=on} } 
+end
+
 end
 

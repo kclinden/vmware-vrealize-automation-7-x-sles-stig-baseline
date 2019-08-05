@@ -26,8 +26,7 @@ compromises and damages incurred during a system compromise."
   tag "check": "Check the system audit configuration to determine if file and
 directory deletions are audited:
 
-# cat /etc/audit.rules /etc/audit/audit.rules | grep -e \"-a exit,always\" |
-grep -i \"rmdir\"
+# cat /etc/audit.rules /etc/audit/audit.rules | grep -e \"-a exit,always\" | grep -i \"rmdir\"
 
 If no results are returned, or the results do not contain \"-S rmdir\", this is
 a finding."
@@ -36,5 +35,11 @@ capture file and directory deletion events:
 
 -a always,exit -F arch=b64 -S rmdir -S rm
 -a always,exit -F arch=b32 -S rmdir -S rm"
+
+describe file('/etc/audit/audit.rules') do
+  its('content') {should match %r{-a exit,always -F arch=b64 -S rmdir}} #modified, but not 100% sure this is a valid match.
+  its('content') {should match %r{-a exit,always -F arch=b32 -S rmdir}}
+end
+
 end
 

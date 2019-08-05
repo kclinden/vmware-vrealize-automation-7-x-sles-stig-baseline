@@ -38,5 +38,11 @@ auditing of failed attempts to access files and programs:
 
 -a exit,always -F arch=b64 -S ftruncate -F success=0
 -a exit,always -F arch=b32 -S ftruncate -F success=0"
+
+describe file('/etc/audit/audit.rules') do
+  its('content') {should match %r{-a exit,always -F arch=b64 -S ftruncate -F success=0}}
+  its('content') {should match %r{-a exit,always -F arch=b32 -S ftruncate -F success=0}}
+end
+
 end
 

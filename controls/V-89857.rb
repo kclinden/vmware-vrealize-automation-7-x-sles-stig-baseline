@@ -61,8 +61,7 @@ If \"/usr/bin/passwd\" is not listed with a permissions filter of at least
 Determine if /etc/passwd, /etc/shadow, /etc/group, and /etc/security/opasswd
 are audited for writing:
 
-# auditctl -l | egrep
-'(/etc/passwd|/etc/shadow|/etc/group|/etc/security/opasswd)'
+# auditctl -l | egrep '(/etc/passwd|/etc/shadow|/etc/group|/etc/security/opasswd)'
 
 If any of these are not listed with a permissions filter of at least \"w\",
 this is a finding."
@@ -104,5 +103,25 @@ Restart the auditd service:
 OR
 
 # /etc/dodscript.sh"
+
+#Currently the passwd,shadow,group, and opasswd are broken into two checks each (w/a vs wa)
+describe file('/etc/audit/audit.rules') do
+  its('content') {should cmp %r{-w /usr/sbin/usermod -p x -k usermod}}
+  its('content') {should cmp %r{-w /usr/sbin/groupmod -p x -k groupmod}}
+  its('content') {should cmp %r{-w /usr/sbin/userdel -p x -k userdel}}
+  its('content') {should cmp %r{-w /usr/sbin/groupdel -p x -k groupdel}}
+  its('content') {should cmp %r{-w /usr/sbin/useradd -p x -k useradd}}
+  its('content') {should cmp %r{-w /usr/sbin/groupadd -p x -k groupadd}}
+  its('content') {should cmp %r{-w /usr/bin/passwd -p x -k passwd}}
+  its('content') {should cmp %r{-w /etc/passwd -p w -k passwd}} 
+  its('content') {should cmp %r{-w /etc/shadow -p w -k shadow}}  
+  its('content') {should cmp %r{-w /etc/group -p w -k group}}  
+  its('content') {should cmp %r{-w /etc/security/opasswd -p w -k opasswd}} 
+  its('content') {should cmp %r{-w /etc/passwd -p a -k passwd}} 
+  its('content') {should cmp %r{-w /etc/shadow -p a -k shadow}}  
+  its('content') {should cmp %r{-w /etc/group -p a -k group}}  
+  its('content') {should cmp %r{-w /etc/security/opasswd -p a -k opasswd}} 
+end
+
 end
 

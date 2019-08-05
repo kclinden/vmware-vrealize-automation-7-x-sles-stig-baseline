@@ -55,5 +55,12 @@ changes for all users and \"root\". Add the following to
 OR
 
 # /etc/dodscript.sh"
+
+describe file('/etc/audit/audit.rules') do
+  its('content') {should match %r{-a always,exit -F arch=b64 -S chmod -F auid=0}}
+  its('content') {should match %r{-a always,exit -F arch=b64 -S chmod -F auid>=500 -F auid!=4294967295}}
+  its('content') {should match %r{-a always,exit -F arch=b32 -S chmod}}
+end
+
 end
 

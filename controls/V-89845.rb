@@ -44,5 +44,13 @@ auditing of failed attempts to access files and programs:
 -a exit,always -F arch=b64 -S open -F exit=-EACCES
 -a exit,always -F arch=b32 -S open -F exit=-EPERM
 -a exit,always -F arch=b32 -S open -F exit=-EACCES"
+
+describe file('/etc/audit/audit.rules') do
+  its('content') {should match %r{-a exit,always -F arch=b64 -S open -F exit=-EPERM}}
+  its('content') {should match %r{-a exit,always -F arch=b64 -S open -F exit=-EACCES}}
+  its('content') {should match %r{-a exit,always -F arch=b32 -S open -F exit=-EPERM}}
+  its('content') {should match %r{-a exit,always -F arch=b32 -S open -F exit=-EACCES}}  
+end
+
 end
 

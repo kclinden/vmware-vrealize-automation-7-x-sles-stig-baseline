@@ -59,5 +59,16 @@ steps:
 2. Replace the address with the address of the authoritative time source.
 3. Save the /etc/ntp.conf file.
 4. Restart the ntp daemon with /etc/init.d/ntp start."
+
+describe service('ntp') do
+  it {should be_running}
+  it {should be_enabled}
+end
+
+
+describe ntp_conf('/etc/ntp.conf') do
+  its('server') { should_not eq '' }
+end
+
 end
 

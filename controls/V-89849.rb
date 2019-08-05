@@ -67,10 +67,16 @@ If it does not, this is a finding."
 auditing of deletions of files and programs:
 
 -a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid=0
--a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F
-auid>=500 -F auid!=4294967295
+-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295
 -a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid=0
--a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F
-auid>=500 -F auid!=4294967295"
+-a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295"
+
+describe file('/etc/audit/audit.rules') do #too limited of a search, these fail.
+  its('content') {should cmp %r{-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid=0}}
+  its('content') {should cmp %r{-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295}}
+  its('content') {should cmp %r{-a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid=0}}
+  its('content') {should cmp %r{-a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295}}
+end
+
 end
 

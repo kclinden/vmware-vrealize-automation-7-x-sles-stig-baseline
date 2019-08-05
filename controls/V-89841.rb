@@ -49,5 +49,12 @@ to contain:
 OR...
 
 # /etc/dodscript.sh"
+
+describe file('/etc/audit/audit.rules') do
+  its('content') {should match %r{-w /var/log/faillog -p wa}}
+  its('content') {should match %r{-w /var/log/lastlog -p wa}}
+  its('content') {should match %r{-w /var/log/tallylog -p wa}}
+end
+
 end
 
