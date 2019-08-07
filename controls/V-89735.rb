@@ -42,8 +42,8 @@ If the file is not owned by \"root\", this is a finding."
 # chown root /etc/syslog-ng/syslog-ng.conf"
 
 #https://www.inspec.io/docs/reference/resources/file/
-describe file('/etc/syslog-ng/syslog-ng.conf') do
-  its('owner') {should eq 'root'}
+describe file('/etc/rsyslog.conf') do
+  its('owner') {should eq 'root'} #is this stig bad? Says to check syslog-ng.conf, but then says to fix rsyslog.conf
 end
 
 end

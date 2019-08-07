@@ -42,8 +42,8 @@ If the mode of the file is more permissive than \"0640\", this is a finding."
 # chmod 640 /etc/syslog-ng/syslog-ng.conf"
 
 #https://www.inspec.io/docs/reference/resources/file/
-describe file('/etc/syslog-ng/syslog-ng.conf') do
-  it { should_not be_more_permissive_than('0640') }
+describe file('/etc/rsyslog.conf') do
+  it { should_not be_more_permissive_than('0640') } #is this stig bad? Says to check syslog-ng.conf, but then says to fix rsyslog.conf
 end
 
 

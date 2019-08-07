@@ -42,7 +42,7 @@ If the file is not group-owned by \"root\", this is a finding."
 # chgrp root /etc/syslog-ng/syslog-ng.conf"
 
 #https://www.inspec.io/docs/reference/resources/file/
-describe file('/etc/syslog-ng/syslog-ng.conf') do
+describe file('/etc/rsyslog.conf') do #is this stig bad? Says to check syslog-ng.conf, but then says to fix rsyslog.conf
   its('group') {should eq 'root'}
 end
 
