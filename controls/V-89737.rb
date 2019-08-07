@@ -40,5 +40,11 @@ If the file is not group-owned by \"root\", this is a finding."
   tag "fix": "Change the group-owner of the /etc/rsyslog.conf file to \"root\":
 
 # chgrp root /etc/syslog-ng/syslog-ng.conf"
+
+#https://www.inspec.io/docs/reference/resources/file/
+describe file('/etc/syslog-ng/syslog-ng.conf') do
+  its('group') {should eq 'root'}
+end
+
 end
 

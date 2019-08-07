@@ -40,5 +40,11 @@ If the file is not owned by \"root\", this is a finding."
   tag "fix": "Use the chown command to set the owner to \"root\":
 
 # chown root /etc/syslog-ng/syslog-ng.conf"
+
+#https://www.inspec.io/docs/reference/resources/file/
+describe file('/etc/syslog-ng/syslog-ng.conf') do
+  its('owner') {should eq 'root'}
+end
+
 end
 

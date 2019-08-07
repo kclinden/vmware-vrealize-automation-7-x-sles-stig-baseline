@@ -40,5 +40,12 @@ If the mode of the file is more permissive than \"0640\", this is a finding."
   tag "fix": "Change the permissions of the syslog configuration file(s):
 
 # chmod 640 /etc/syslog-ng/syslog-ng.conf"
+
+#https://www.inspec.io/docs/reference/resources/file/
+describe file('/etc/syslog-ng/syslog-ng.conf') do
+  it { should_not be_more_permissive_than('0640') }
+end
+
+
 end
 

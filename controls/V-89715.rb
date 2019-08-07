@@ -46,5 +46,11 @@ experiencing a TCP SYN flood.
 Reload sysctl to verify the new change:
 
 # sysctl -p"
+
+#https://www.inspec.io/docs/reference/resources/kernel_parameter/
+describe kernel_parameter('net.ipv4.tcp_syncookies') do
+  its('value') { should eq 1 }
+end
+
 end
 

@@ -60,5 +60,11 @@ TMOUT=900
 readonly TMOUT
 export TMOUT
 mesg n 2>/dev/null"
+
+#https://www.inspec.io/docs/reference/resources/parse_config_file/
+describe parse_config_file('/etc/profile.d/tmout.sh') do
+ its('TMOUT') { should eq '900' }
+end
+
 end
 

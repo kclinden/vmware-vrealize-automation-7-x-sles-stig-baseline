@@ -46,5 +46,11 @@ If \"root\" is not returned as a result, this is a finding."
 the following command:
 
 # chgrp root /var/log"
+
+#https://www.inspec.io/docs/reference/resources/file/
+describe file('/var/log') do
+  its('group') {should cmp 'root'}
+end
+
 end
 

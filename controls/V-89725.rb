@@ -46,5 +46,11 @@ If \"drwxr-x---\" is not returned as a result, this is a finding."
 running the following command:
 
 # chmod 0750 /var/log"
+
+#https://www.inspec.io/docs/reference/resources/file/
+describe file('/var/log') do
+  it { should_not be_more_permissive_than('0750') }
+end
+
 end
 

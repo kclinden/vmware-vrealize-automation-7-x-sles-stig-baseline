@@ -69,5 +69,11 @@ access to privileged accounts by running the following commands:
 Restart the ssh service:
 
 # service sshd restart"
+
+# http://inspec.io/docs/reference/resources/sshd_config/
+describe sshd_config do
+  its('Protocol') { should eq '2' }
+end
+
 end
 

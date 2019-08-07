@@ -63,5 +63,19 @@ TMOUT=900
 readonly TMOUT
 export TMOUT
 mesg n 2>/dev/null"
+
+#https://www.inspec.io/docs/reference/resources/parse_config_file/
+describe parse_config_file('/etc/profile.d/tmout.sh') do
+ its('TMOUT') { should eq '900' }
+end
+
+#https://www.inspec.io/docs/reference/resources/file/
+describe file('/etc/profile.d/tmout.sh') do
+  it {should exist}
+  it { should_not be_more_permissive_than('0644') }
+  its('owner') {should cmp 'root'}
+  its('group') {should cmp 'root'}
+end
+
 end
 

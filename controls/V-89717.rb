@@ -48,5 +48,11 @@ setting of \"1280\", this is a finding."
 Reload sysctl to verify the new change:
 
 # sysctl -p"
+
+#https://www.inspec.io/docs/reference/resources/kernel_parameter/
+describe kernel_parameter('net.ipv4.tcp_max_syn_backlog') do
+  its('value') { should eq 1280 }
+end
+
 end
 
