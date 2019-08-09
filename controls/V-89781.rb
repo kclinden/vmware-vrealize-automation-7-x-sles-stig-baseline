@@ -48,5 +48,10 @@ root_unlock_time=300
 Edit \"/etc/pam.d/common-account\" and add the following line:
 
 account required pam_tally2.so"
+
+describe pam('/etc/pam.d/common-account') do
+  its('lines') { should match_pam_rule('account required pam_tally2.so')}
+end
+
 end
 

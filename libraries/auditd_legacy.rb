@@ -4,7 +4,7 @@ require "inspec/utils/filter"
 require "inspec/utils/parser"
 
 module Inspec::Resources
-  class AuditD_legacyaemon < Inspec.resource(1)
+  class AuditdLegacy < Inspec.resource(1)
     extend Forwardable
     attr_accessor :lines
     attr_reader :params
