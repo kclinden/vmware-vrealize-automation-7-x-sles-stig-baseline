@@ -9,20 +9,20 @@ module Inspec::Resources
     attr_accessor :lines
     attr_reader :params
 
-    name "auditd_legacy"
+    name "autitdlegacy"
     supports platform: "unix"
-    desc "Use the auditd_legacy InSpec audit resource to test the rules for logging that exist on the system. The audit.rules file is typically located under /etc/audit/ and contains the list of rules that define what is captured in log files. These rules are output using the auditcl -l command."
+    desc "Use the autitdlegacy InSpec audit resource to test the rules for logging that exist on the system. The audit.rules file is typically located under /etc/audit/ and contains the list of rules that define what is captured in log files. These rules are output using the auditcl -l command."
     example <<~EXAMPLE
-      describe auditd_legacy.syscall('chown').where {arch == 'b32'} do
+      describe autitdlegacy.syscall('chown').where {arch == 'b32'} do
         its('action') { should eq ['always'] }
         its('list') { should eq ['exit'] }
       end
 
-      describe auditd_legacy.where {key == 'privileged'} do
+      describe autitdlegacy.where {key == 'privileged'} do
         its('permissions') { should include ['x'] }
       end
 
-      describe auditd_legacy do
+      describe autitdlegacy do
         its('lines') { should include %r(-w /etc/ssh/sshd_config) }
       end
     EXAMPLE
@@ -47,7 +47,7 @@ module Inspec::Resources
       #if @content =~ /^LIST_RULES:/
       #  raise Inspec::Exceptions::ResourceFailed,
       #    "The version of audit is outdated." \
-      #    "The `auditd_legacy` resource supports versions of audit >= 2.3."
+      #    "The `autitdlegacy` resource supports versions of audit >= 2.3."
       #end
       parse_content
     end
@@ -166,7 +166,7 @@ module Inspec::Resources
     end
 
     def to_s
-      "Auditd_legacy Rules"
+      "autitdlegacy Rules"
     end
 
     private
