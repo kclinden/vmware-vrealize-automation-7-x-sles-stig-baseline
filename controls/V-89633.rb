@@ -40,5 +40,27 @@ log_on_failure = HOST USERID
 
 The /etc/xinetd.conf file contains default values that will hold true for all
 services unless individually modified in the service's \"xinetd.d\" file."
+
+#describe xinetd_conf do
+#    its('log_type') { should cmp 'SYSLOG authpriv' }
+#    its('log_on_success') { should cmp 'HOST PID USERID EXIT' }
+#    its('log_on_failure') { should cmp 'HOST USERID' }
+#end
+
+#describe parse_config_file('/etc/xinetd.conf') do
+#  its('log_type') { should cmp 'SYSLOG authpriv' }
+#  its('log_on_success') { should cmp 'HOST PID USERID EXIT' }
+#  its('log_on_failure') { should cmp 'HOST USERID' }
+#end
+
+#Partially working. rsync file fails for some reason
+command('find /etc/xinetd.d -type f').stdout.split.each do |fname|
+  describe parse_config_file(fname) do
+    its('log_type') { should cmp 'SYSLOG authpriv' }
+    its('log_on_success') { should cmp 'HOST PID USERID EXIT' }
+    its('log_on_failure') { should cmp 'HOST USERID' }
+  end
+end
+
 end
 

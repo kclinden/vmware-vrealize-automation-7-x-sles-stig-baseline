@@ -49,5 +49,11 @@ If the service is running, this is a finding."
 command:
 
 # chkconfig ypbind off"
+
+describe service('ypbind') do
+  it { should_not be_enabled }
+  it { should_not be_running }
+end
+
 end
 

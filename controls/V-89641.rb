@@ -47,5 +47,12 @@ DaemonPortOptions=Addr=127.0.0.1,Port=smtp,Name=MTA/\" /etc/sendmail.cf
 Restart the sendmail service:
 
 # service sendmail restart"
+
+#currently only checking if this is installed; This service should not exist on the system ootb. 
+describe service('sendmail') do
+  it { should_not be_installed }
+  it { should_not be_enabled }
+end
+
 end
 
