@@ -36,5 +36,10 @@ UDP-Lite protocol handler:
 Add the following rule to the iptables firewall ruleset:
 
 # iptables -A INPUT -p udplite -j DROP"
+  
+describe iptables do
+  it { should have_rule('-A INPUT -p udplite -j DROP') }
+end  
+  
 end
 
